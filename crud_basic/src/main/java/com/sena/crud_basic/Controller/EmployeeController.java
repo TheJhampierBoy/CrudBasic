@@ -1,43 +1,30 @@
-package com.sena.crud_basic.Controller;
+package com.sena.crud_basic.controller;
 
 import com.sena.crud_basic.model.Employee;
 import com.sena.crud_basic.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/api/v1/employee")
 public class EmployeeController {
+
+    /*
+     * GET (Obtener todos los empleados)
+     * GET (Obtener empleado por ID)
+     * POST (Registrar un empleado)
+     * PUT (Actualizar un empleado)
+     * DELETE (Eliminar un empleado)
+     */
 
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
-    }
-
-    @GetMapping("/{id}")
-    public Optional<Employee> getEmployeeById(@PathVariable Integer id) {
-        return employeeService.getEmployeeById(id);
-    }
-
-    @PostMapping
-    public Employee createEmployee(@RequestBody Employee employee) {
-        return employeeService.saveEmployee(employee);
-    }
-
-    @PutMapping("/{id}")
-    public Employee updateEmployee(@PathVariable Integer id, @RequestBody Employee employee) {
-        employee.setEmployeeID(id); 
-        return employeeService.saveEmployee(employee);
-    }
-    
-    @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable Integer id) {
-        employeeService.deleteEmployee(id);
+    @PostMapping("/")
+    public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
+        employeeService.saveEmployee(employee);
+        return new ResponseEntity<>("Register OK", HttpStatus.OK);
     }
 }

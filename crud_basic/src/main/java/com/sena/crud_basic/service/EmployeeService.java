@@ -1,13 +1,13 @@
 package com.sena.crud_basic.service;
 
+import com.sena.crud_basic.DTO.EmployeeDTO;
+import com.sena.crud_basic.DTO.responseDTO;
+import com.sena.crud_basic.model.Employee;
+import com.sena.crud_basic.repository.EmployeeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import com.sena.crud_basic.DTO.responseDTO;
-import com.sena.crud_basic.DTO.EmployeeDTO;
-import com.sena.crud_basic.model.Employee;
-import com.sena.crud_basic.repository.EmployeeRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +16,6 @@ import java.util.Optional;
 @Service
 public class EmployeeService {
 
-    // Inyección de dependencia para acceder al repositorio
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -32,25 +31,25 @@ public class EmployeeService {
 
     // Eliminar empleado por ID
     public responseDTO deleteEmployee(int id) {
-        if (!findById(id).isPresent()) {
-            return new responseDTO(HttpStatus.OK.toString(), "The register does not exist");
+        if (!employeeRepository.existsById(id)) {
+            return new responseDTO(HttpStatus.NOT_FOUND.toString(), "El empleado no existe");
         }
         employeeRepository.deleteById(id);
-        return new responseDTO(HttpStatus.OK.toString(), "Se eliminó correctamente");
+        return new responseDTO(HttpStatus.OK.toString(), "Empleado eliminado correctamente");
     }
 
-    // Guardar o actualizar empleado
+    // Guardar o actualizar empleado desde un DTO
     public responseDTO save(EmployeeDTO employeeDTO) {
-        // Validación de longitud del nombre
         if (employeeDTO.getFirstName().length() < 1 || employeeDTO.getFirstName().length() > 50) {
-            return new responseDTO(HttpStatus.BAD_REQUEST.toString(), "El nombre debe estar entre 1 y 50 caracteres");
+            return new responseDTO(HttpStatus.BAD_REQUEST.toString(), "El nombre debe tener entre 1 y 50 caracteres");
         }
-        Employee employeeRegister = convertToModel(employeeDTO);
-        employeeRepository.save(employeeRegister);
-        return new responseDTO(HttpStatus.OK.toString(), "Se guardó correctamente");
+
+        Employee employee = convertToModel(employeeDTO);
+        employeeRepository.save(employee);
+        return new responseDTO(HttpStatus.OK.toString(), "Empleado guardado correctamente");
     }
 
-    // Convertir de modelo a DTO
+    // Convertir modelo a DTO
     public EmployeeDTO convertToDTO(Employee employee) {
         return new EmployeeDTO(
                 employee.getEmployeeID(),
@@ -58,10 +57,11 @@ public class EmployeeService {
                 employee.getLastName(),
                 employee.getRole(),
                 employee.getPhoneNumber(),
-                employee.getEmail());
+                employee.getEmail()
+        );
     }
 
-    // Convertir de DTO a modelo
+    // Convertir DTO a modelo
     public Employee convertToModel(EmployeeDTO employeeDTO) {
         return new Employee(
                 employeeDTO.getEmployeeID(),
@@ -70,6 +70,7 @@ public class EmployeeService {
                 employeeDTO.getRole(),
                 employeeDTO.getPhoneNumber(),
                 employeeDTO.getEmail(),
-                LocalDateTime.now()); // Agregar fecha y hora de creación
+                LocalDateTime.now()
+        );
     }
 }

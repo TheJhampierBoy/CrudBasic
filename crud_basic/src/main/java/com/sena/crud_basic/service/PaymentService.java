@@ -1,12 +1,15 @@
 package com.sena.crud_basic.service;
 
+import com.sena.crud_basic.DTO.PaymentDTO;
+import com.sena.crud_basic.DTO.responseDTO;
 import com.sena.crud_basic.model.Payment;
 import com.sena.crud_basic.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PaymentService {
@@ -14,19 +17,49 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    public List<Payment> getAllPayments() {
-        return paymentRepository.findAll();
+    // Guardar un nuevo pago
+    public responseDTO save(PaymentDTO paymentDTO) {
+        Payment payment = new Payment();
+        payment.setAmount(paymentDTO.getAmount());
+        payment.setDate(paymentDTO.getDate());
+        payment.setMethod(paymentDTO.getMethod());
+        payment.setDescription(paymentDTO.getDescription());
+
+        paymentRepository.save(payment);
+        return new responseDTO("Pago registrado correctamente");
     }
 
-    public Optional<Payment> getPaymentById(Integer id) {
-        return paymentRepository.findById(id);
+    // Listar todos los pagos
+    public List<PaymentDTO> findAll() {
+        return paymentRepository.findAll()
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
-    public Payment savePayment(Payment payment) {
-        return paymentRepository.save(payment);
+    // Buscar un pago por ID
+    public Optional<PaymentDTO> findById(int id) {
+        Optional<Payment> payment = paymentRepository.findById(id);
+        return payment.map(this::convertToDTO);
     }
 
-    public void deletePayment(Integer id) {
+    // Eliminar un pago por ID
+    public responseDTO deletePayment(int id) {
+        if (!paymentRepository.existsById(id)) {
+            return new responseDTO("El pago no existe");
+        }
         paymentRepository.deleteById(id);
+        return new responseDTO("Pago eliminado correctamente");
+    }
+
+    // Método para convertir entidad a DTO
+    private PaymentDTO convertToDTO(Payment payment) {
+        PaymentDTO dto = new PaymentDTO();
+        dto.setId(payment.getId());
+        dto.setAmount(payment.getAmount());
+        dto.setDate(payment.getDate());
+        dto.setMethod(payment.getMethod());
+        dto.setDescription(payment.getDescription());
+        return dto;
     }
 }

@@ -2,7 +2,6 @@ package com.sena.crud_basic.controller;
 
 import com.sena.crud_basic.DTO.OrderDetailDTO;
 import com.sena.crud_basic.DTO.responseDTO;
-import com.sena.crud_basic.model.OrderDetail;
 import com.sena.crud_basic.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,7 +44,8 @@ public class OrderDetailController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteOrderDetail(@PathVariable int id) {
-        var message = orderDetailService.deleteOrderDetail(id);
+        var message = orderDetailService.deleteOrder(id);
         return new ResponseEntity<>(message, HttpStatus.OK);
-    }            
+    }
+    
 }

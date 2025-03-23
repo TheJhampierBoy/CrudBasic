@@ -1,78 +1,50 @@
 package com.sena.crud_basic.model;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "supplier")
 public class Supplier {
+    private int id;
+    private String name;
+    private String contact;
+    private String address;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SupplierID")
-    private int supplierID;
-
-    @Column(name = "CompanyName", length = 150, nullable = false)
-    private String companyName;
-
-    @Column(name = "ContactName", length = 100, nullable = false)
-    private String contactName;
-
-    @Column(name = "PhoneNumber", length = 20, nullable = false)
-    private String phoneNumber;
-
-    @Column(name = "Email", length = 150, nullable = false, unique = true)
-    private String email;
-
-    // Constructor vacío
     public Supplier() {}
 
-    // Constructor con parámetros
-    public Supplier(int supplierID, String companyName, String contactName, String phoneNumber, String email) {
-        this.supplierID = supplierID;
-        this.companyName = companyName;
-        this.contactName = contactName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public Supplier(int id, String name, String contact, String address) {
+        this.id = id;
+        this.name = name;
+        this.contact = contact;
+        this.address = address;
     }
 
     // Getters y Setters
-    public int getSupplierID() {
-        return supplierID;
+    public int getId() {
+        return id;
     }
 
-    public void setSupplierID(int supplierID) {
-        this.supplierID = supplierID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getName() {
+        return name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getContactName() {
-        return contactName;
+    public String getContact() {
+        return contact;
     }
 
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

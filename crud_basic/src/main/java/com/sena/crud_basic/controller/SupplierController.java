@@ -2,7 +2,6 @@
 
     import com.sena.crud_basic.DTO.SupplierDTO;
     import com.sena.crud_basic.DTO.responseDTO;
-    import com.sena.crud_basic.model.Supplier;
     import com.sena.crud_basic.service.SupplierService;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.HttpStatus;

@@ -1,15 +1,19 @@
-package com.sena.crud_basic.model;
+package com.sena.crud_basic.DTO;
 
-public class Payment {
+public class PaymentDTO {
+    
     private int id;
     private double amount;
     private String date;
     private String method;
     private String description;
 
-    public Payment() {}
+    // Constructor vacío
+    public PaymentDTO() {
+    }
 
-    public Payment(int id, double amount, String date, String method, String description) {
+    // Constructor con parámetros
+    public PaymentDTO(int id, double amount, String date, String method, String description) {
         this.id = id;
         this.amount = amount;
         this.date = date;

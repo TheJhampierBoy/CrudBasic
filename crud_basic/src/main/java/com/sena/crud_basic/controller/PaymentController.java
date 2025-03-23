@@ -2,7 +2,6 @@ package com.sena.crud_basic.controller;
 
 import com.sena.crud_basic.DTO.PaymentDTO;
 import com.sena.crud_basic.DTO.responseDTO;
-import com.sena.crud_basic.model.Payment;
 import com.sena.crud_basic.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

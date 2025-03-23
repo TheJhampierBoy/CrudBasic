@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "OrderDetail")
 public class OrderDetail {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderDetailID")
@@ -22,18 +22,19 @@ public class OrderDetail {
     @Column(name = "Quantity", nullable = false)
     private int quantity;
 
-    // Constructor vacío
+    @Column(name = "Price", nullable = false)
+    private double price;
+
     public OrderDetail() {}
 
-    // Constructor con parámetros
-    public OrderDetail(int orderDetailID, Order order, Drug drug, int quantity) {
+    public OrderDetail(int orderDetailID, Order order, Drug drug, int quantity, double price) {
         this.orderDetailID = orderDetailID;
         this.order = order;
         this.drug = drug;
         this.quantity = quantity;
+        this.price = price;
     }
 
-    // Getters y Setters
     public int getOrderDetailID() {
         return orderDetailID;
     }
@@ -64,5 +65,13 @@ public class OrderDetail {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

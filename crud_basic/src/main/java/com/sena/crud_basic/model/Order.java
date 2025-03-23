@@ -29,17 +29,30 @@ public class Order {
     @Column(name = "Status", length = 50, nullable = false)
     private String status;
 
+    @Column(name = "Product", nullable = false)
+    private String product;
+
+    @Column(name = "Quantity", nullable = false)
+    private int quantity;
+
+    @Column(name = "Price", nullable = false)
+    private double price;
+
     // Constructor vacío
     public Order() {}
 
     // Constructor con parámetros
-    public Order(int orderID, Employee employee, Customer customer, LocalDateTime orderDate, int totalAmount, String status) {
+    public Order(int orderID, Employee employee, Customer customer, LocalDateTime orderDate,
+                 int totalAmount, String status, String product, int quantity, double price) {
         this.orderID = orderID;
         this.employee = employee;
         this.customer = customer;
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
         this.status = status;
+        this.product = product;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     // Getters y Setters
@@ -89,5 +102,29 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

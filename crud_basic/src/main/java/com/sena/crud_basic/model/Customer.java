@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "customer") // Nombre en la BD (sin 's')
+@Table(name = "customer")
 public class Customer {
 
     @Id
@@ -16,10 +16,8 @@ public class Customer {
     private String telefono;
     private LocalDateTime createdAt;
 
-    // Constructor vacío (requerido por JPA)
     public Customer() {}
 
-    // Constructor con parámetros
     public Customer(int id, String nombre, String email, String telefono, LocalDateTime createdAt) {
         this.id = id;
         this.nombre = nombre;
@@ -28,7 +26,6 @@ public class Customer {
         this.createdAt = createdAt;
     }
 
-    // Getters y Setters
     public int getId() {
         return id;
     }
@@ -45,20 +42,20 @@ public class Customer {
         this.nombre = nombre;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getTelefono() {
         return telefono;
     }
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDateTime getCreatedAt() {

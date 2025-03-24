@@ -57,11 +57,11 @@ public class EmployeeService {
                 employee.getLastName(),
                 employee.getRole(),
                 employee.getPhoneNumber(),
-                employee.getEmail()
+                employee.getEmail(),
+                employee.getStatus()
         );
     }
 
-    // Convertir DTO a modelo
     public Employee convertToModel(EmployeeDTO employeeDTO) {
         return new Employee(
                 employeeDTO.getEmployeeID(),
@@ -70,6 +70,7 @@ public class EmployeeService {
                 employeeDTO.getRole(),
                 employeeDTO.getPhoneNumber(),
                 employeeDTO.getEmail(),
+                employeeDTO.getStatus(),
                 LocalDateTime.now()
         );
     }

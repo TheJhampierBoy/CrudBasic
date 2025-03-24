@@ -8,21 +8,31 @@ public class EmployeeDTO {
     private String role;
     private String phoneNumber;
     private String email;
+    private String status;
 
     // Constructor vacío
     public EmployeeDTO() {}
 
-    // Constructor con parámetros
-    public EmployeeDTO(int employeeID, String firstName, String lastName, String role, String phoneNumber, String email) {
+    public EmployeeDTO(int employeeID, String firstName, String lastName, String role, String phoneNumber, String email, String status) {
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.role = role;   
+        this.role = role;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.status = status;
     }
+    
 
     // Getters y Setters
+    public String getStatus() {
+        return status;
+    }
+    
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
     public int getEmployeeID() {
         return employeeID;
     }

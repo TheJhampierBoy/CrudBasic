@@ -27,6 +27,9 @@ public class Employee {
     @Column(name = "Email", length = 150, nullable = false, unique = true)
     private String email;
 
+    @Column(name = "Status", length = 20, nullable = false)
+    private String status;
+
     @Column(name = "CreatedAt", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -35,71 +38,41 @@ public class Employee {
         this.createdAt = LocalDateTime.now();
     }
 
-    // Constructor vacío
     public Employee() {}
 
-    // Constructor con todos los parámetros
     public Employee(int employeeID, String firstName, String lastName, 
-                    String role, String phoneNumber, String email, LocalDateTime createdAt) {
+                    String role, String phoneNumber, String email, String status, LocalDateTime createdAt) {
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.status = status;
         this.createdAt = createdAt;
     }
 
     // Getters y Setters
-    public int getEmployeeID() {
-        return employeeID;
-    }
+    public int getEmployeeID() { return employeeID; }
+    public void setEmployeeID(int employeeID) { this.employeeID = employeeID; }
 
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
-    }
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 
-    public String getLastName() {
-        return lastName;
-    }
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getRole() {
-        return role;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
 }

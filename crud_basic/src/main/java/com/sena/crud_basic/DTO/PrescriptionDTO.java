@@ -1,48 +1,32 @@
-package com.sena.crud_basic.model;
+package com.sena.crud_basic.DTO;
 
-import jakarta.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "Prescription")
-public class Prescription {
+public class PrescriptionDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PrescriptionID")
     private int prescriptionID;
-
-    @Column(name = "EmployeeID", nullable = false)
     private int employeeID;
-
-    @Column(name = "CustomerID", nullable = false)
     private int customerID;
-
-    @Column(name = "DoctorName", length = 150, nullable = false)
     private String doctorName;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "PrescriptionDate", nullable = false)
     private Date prescriptionDate;
-
-    @Column(name = "Status", length = 20, nullable = false)
     private String status;
 
-
-    public Prescription() {}
-
-    public Prescription(int employeeID, int customerID, String doctorName, Date prescriptionDate, String status) {
-        this.employeeID = employeeID;
-        this.customerID = customerID;
-        this.doctorName = doctorName;
-        this.prescriptionDate = prescriptionDate;
-        this.status = status;
-    }
     public String getStatus() {
         return status;
     }
     
     public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    public PrescriptionDTO() {}
+
+    public PrescriptionDTO(int prescriptionID, int employeeID, int customerID, String doctorName, Date prescriptionDate, String status) {
+        this.prescriptionID = prescriptionID;
+        this.employeeID = employeeID;
+        this.customerID = customerID;
+        this.doctorName = doctorName;
+        this.prescriptionDate = prescriptionDate;
         this.status = status;
     }
     

@@ -249,28 +249,133 @@ footer p {
     max-width: 600px;
     margin: 0 auto;
 }
+/* Producto Carousel - Soft Color Integration */
+#productos-lista.productos-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 80px 20px;
+    background: #121212;
+}
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .beneficios {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .hero h2 {
-        font-size: 2.2rem;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-    }
-    
-    .servicio {
-        padding: 60px 20px;
-    }
+.producto-tarjeta {
+    background: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    width: 280px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.producto-tarjeta:hover {
+    transform: translateY(-10px);
+    border-color: #64dfdf;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.producto-imagen {
+    height: 220px;
+    object-fit: cover;
+}
+
+.producto-info {
+    padding: 20px;
+    text-align: center;
+    background: #252525;
+}
+
+.producto-info h3 {
+    color: #64dfdf;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.producto-info p {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.producto-info .precio {
+    color: #5e60ce;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+.btn-producto {
+    background: #5e60ce;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-producto:hover {
+    background: #4a4fc4;
+    transform: translateY(-2px);
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+.carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-inner {
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+}
+
+.carousel-slide {
+    flex: 0 0 auto;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.carousel-btn {
+    pointer-events: auto;
+    background: rgba(94, 96, 206, 0.1);
+    color: #5e60ce;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.carousel-btn:hover:not(:disabled) {
+    background: rgba(94, 96, 206, 0.2);
 }

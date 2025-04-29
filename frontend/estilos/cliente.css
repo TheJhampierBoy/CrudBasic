@@ -1,0 +1,316 @@
+/* Main Variables */
+:root {
+    --azul-principal: #1a6bb2;
+    --azul-oscuro: #0d4d84;
+    --azul-claro: #55a2e5;
+    --azul-muy-claro: #e7f1fb;
+    --gris-claro: #f5f5f5;
+    --blanco: #ffffff;
+    --texto-oscuro: #333333;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--texto-oscuro);
+    background-color: var(--gris-claro);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--azul-oscuro);
+    font-weight: 600;
+}
+
+/* Navigation */
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--blanco);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    margin-top: 20px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.menu a {
+    color: var(--azul-oscuro);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: var(--transition);
+    position: relative;
+}
+
+.menu a:hover {
+    color: var(--azul-principal);
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--azul-principal);
+    transition: var(--transition);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--azul-oscuro);
+    transition: var(--transition);
+}
+
+/* Curvatura */
+.curvatura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--blanco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.titulo-cliente {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.titulo-cliente h2 {
+    color: var(--azul-principal);
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--azul-claro);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Filtrar y Agregar Sección */
+.filtrar-clientes, .agregarClientes {
+    margin-bottom: 1.5rem;
+}
+
+.filtrar-clientes {
+    display: flex;
+    gap: 1rem;
+}
+
+.filtrar-clientes input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.filtrar-clientes input:focus {
+    border-color: var(--azul-claro);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(85, 162, 229, 0.2);
+}
+
+.filtrar-clientes button, .agregarClientes button {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filtrar-clientes button:hover, .agregarClientes button:hover {
+    background-color: var(--azul-oscuro);
+}
+
+/* Tabla Clientes */
+.clientes-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.clientes-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.clientes-table thead {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+}
+
+.clientes-table th, .clientes-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.clientes-table tbody tr {
+    transition: var(--transition);
+}
+
+.clientes-table tbody tr:hover {
+    background-color: var(--azul-muy-claro);
+}
+
+.clientes-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: var(--blanco);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.form-control, select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.form-control:focus, select:focus {
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 3px rgba(85, 162, 229, 0.2);
+    outline: none;
+}
+
+.btn-close {
+    color: var(--blanco);
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.btn-primary {
+    background-color: var(--azul-principal);
+    border-color: var(--azul-principal);
+    transition: var(--transition);
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navegacion {
+        padding: 0.5rem 1rem;
+    }
+    
+    .menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--blanco);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        gap: 1rem;
+        display: none;
+    }
+    
+    .menu.active {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .filtrar-clientes {
+        flex-direction: column;
+    }
+    
+    .clientes-table {
+        overflow-x: auto;
+    }
+}

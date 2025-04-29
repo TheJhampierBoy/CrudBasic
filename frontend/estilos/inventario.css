@@ -1,0 +1,316 @@
+/* Main Variables */
+:root {
+    --morado-principal: #6a1b9a;
+    --morado-oscuro: #4a148c;
+    --morado-claro: #9c4dcc;
+    --morado-muy-claro: #f3e5f5;
+    --gris-claro: #f5f5f5;
+    --blanco: #ffffff;
+    --texto-oscuro: #333333;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--texto-oscuro);
+    background-color: var(--gris-claro);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--morado-oscuro);
+    font-weight: 600;
+}
+
+/* Navigation */
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--blanco);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    margin-top: 20px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.menu a {
+    color: var(--morado-oscuro);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: var(--transition);
+    position: relative;
+}
+
+.menu a:hover {
+    color: var(--morado-principal);
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--morado-principal);
+    transition: var(--transition);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--morado-oscuro);
+    transition: var(--transition);
+}
+
+/* Curvatura */
+.curvatura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--blanco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.titulo-inventario {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.titulo-inventario h2 {
+    color: var(--morado-principal);
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--morado-claro);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Filtrar y Agregar Sección */
+.filtrar-inventario, .agregarInventario {
+    margin-bottom: 1.5rem;
+}
+
+.filtrar-inventario {
+    display: flex;
+    gap: 1rem;
+}
+
+.filtrar-inventario input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.filtrar-inventario input:focus {
+    border-color: var(--morado-claro);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(156, 77, 204, 0.2);
+}
+
+.filtrar-inventario button, .agregarInventario button {
+    background-color: var(--morado-principal);
+    color: var(--blanco);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filtrar-inventario button:hover, .agregarInventario button:hover {
+    background-color: var(--morado-oscuro);
+}
+
+/* Tabla Inventario */
+.inventario-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.inventario-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.inventario-table thead {
+    background-color: var(--morado-principal);
+    color: var(--blanco);
+}
+
+.inventario-table th, .inventario-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.inventario-table tbody tr {
+    transition: var(--transition);
+}
+
+.inventario-table tbody tr:hover {
+    background-color: var(--morado-muy-claro);
+}
+
+.inventario-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: var(--morado-principal);
+    color: var(--blanco);
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: var(--blanco);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.form-control, select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.form-control:focus, select:focus {
+    border-color: var(--morado-claro);
+    box-shadow: 0 0 0 3px rgba(156, 77, 204, 0.2);
+    outline: none;
+}
+
+.btn-close {
+    color: var(--blanco);
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.btn-primary {
+    background-color: var(--morado-principal);
+    border-color: var(--morado-principal);
+    transition: var(--transition);
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--morado-oscuro);
+    border-color: var(--morado-oscuro);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navegacion {
+        padding: 0.5rem 1rem;
+    }
+    
+    .menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--blanco);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        gap: 1rem;
+        display: none;
+    }
+    
+    .menu.active {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .filtrar-inventario {
+        flex-direction: column;
+    }
+    
+    .inventario-table {
+        overflow-x: auto;
+    }
+}

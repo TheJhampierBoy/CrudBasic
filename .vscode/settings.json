@@ -1,0 +1,9 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+<<<<<<< HEAD
+    "java.dependency.packagePresentation": "hierarchical",
+    "liveServer.settings.port": 5502
+=======
+    "java.dependency.packagePresentation": "hierarchical"
+>>>>>>> 567e58b80bcf1f3dd57ca8dd28743a1368bf4c72
+}

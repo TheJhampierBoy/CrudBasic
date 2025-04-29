@@ -1,0 +1,401 @@
+/* Main Variables */
+:root {
+    --azul-principal: #1a6bb2;
+    --azul-oscuro: #0d4d84;
+    --azul-claro: #55a2e5;
+    --azul-muy-claro: #e7f1fb;
+    --gris-claro: #f5f5f5;
+    --blanco: #ffffff;
+    --texto-oscuro: #333333;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --nav-height: 100px;
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--texto-oscuro);
+    background-color: var(--gris-claro);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    padding-top: calc(var(--nav-height) + 150px); /* Increased to accommodate the wave */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--azul-oscuro);
+    font-weight: 600;
+}
+
+/* Curvatura / Wave */
+.curvatura {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 999;
+}
+
+/* Navigation */
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    background-color: transparent; /* Changed to transparent to show wave */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo img {
+    height: 80px;
+    transition: var(--transition);
+}
+
+.menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.menu a {
+    color: var(--blanco); /* Changed to white for better contrast on blue wave */
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+    position: relative;
+    font-size: 1.1rem;
+    border-radius: var(--border-radius);
+}
+
+.menu a:hover {
+    color: var(--blanco);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--blanco);
+    transition: var(--transition);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--blanco); /* Changed to white */
+    transition: var(--transition);
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--blanco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.titulo-prescripcion {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.titulo-prescripcion h2 {
+    color: var(--azul-principal);
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--azul-claro);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Funcionalidades Admin Section */
+.funcionalidades-admin {
+    padding: 1.5rem;
+    background-color: var(--blanco);
+    border-radius: var(--border-radius);
+}
+
+/* Filtrar y Agregar Sección */
+.filtrar-prescripciones, .agregarPrescripciones {
+    margin-bottom: 1.5rem;
+}
+
+.filtrar-prescripciones {
+    display: flex;
+    gap: 1rem;
+}
+
+.filtrar-prescripciones input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.filtrar-prescripciones input:focus {
+    border-color: var(--azul-claro);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(85, 162, 229, 0.2);
+}
+
+.filtrar-prescripciones button, .agregarPrescripciones button {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filtrar-prescripciones button:hover, .agregarPrescripciones button:hover {
+    background-color: var(--azul-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.filtrar-prescripciones button:active, .agregarPrescripciones button:active {
+    transform: translateY(0);
+}
+
+/* Tabla Prescripciones */
+.prescripciones-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.prescripciones-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.prescripciones-table thead {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+}
+
+.prescripciones-table th, .prescripciones-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.prescripciones-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.prescripciones-table tbody tr {
+    transition: var(--transition);
+}
+
+.prescripciones-table tbody tr:hover {
+    background-color: var(--azul-muy-claro);
+}
+
+.prescripciones-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: var(--blanco);
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.form-control, .form-select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 3px rgba(85, 162, 229, 0.2);
+    outline: none;
+}
+
+.btn-close {
+    color: var(--blanco);
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.btn-primary {
+    background-color: var(--azul-principal);
+    border-color: var(--azul-principal);
+    transition: var(--transition);
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover {
+    background-color: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    :root {
+        --nav-height: 80px;
+    }
+    
+    body {
+        padding-top: calc(var(--nav-height) + 130px);
+    }
+    
+    .logo img {
+        height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --nav-height: 70px;
+    }
+    
+    body {
+        padding-top: calc(var(--nav-height) + 100px);
+    }
+    
+    .navegacion {
+        padding: 0.5rem 1rem;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+    
+    .menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--azul-principal);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        gap: 0.5rem;
+        display: none;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+    
+    .menu.active {
+        display: flex;
+    }
+    
+    .menu a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-content {
+        padding: 1.5rem 1rem;
+        margin-top: 1rem;
+    }
+    
+    .filtrar-prescripciones {
+        flex-direction: column;
+    }
+    
+    .filtrar-prescripciones button, .agregarPrescripciones button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .prescripciones-table th, .prescripciones-table td {
+        padding: 0.75rem;
+    }
+    
+    .titulo-prescripcion h2 {
+        font-size: 1.4rem;
+    }
+}

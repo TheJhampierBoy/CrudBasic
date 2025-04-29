@@ -1,0 +1,2 @@
+(self.__LOADABLE_LOADED_CHUNKS__=self.__LOADABLE_LOADED_CHUNKS__||[]).push([[64675],{586800:(_,e,r)=>{var s="";_.exports={locale:"es-ES",i18nStrings:void 0,plural:r(803863)}},803863:_=>{_.exports=function(_){return 1!=+_}}}]);
+//# sourceMappingURL=https://sm.pinimg.com/webapp/locale-es_ES-data-js-e260af9769da34bd.mjs.map

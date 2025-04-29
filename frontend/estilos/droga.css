@@ -1,0 +1,521 @@
+/* Main Variables */
+:root {
+    --azul-principal: #1f7fdb;
+    --azul-oscuro: #0d5ca3;
+    --azul-claro: #5db1ff;
+    --azul-muy-claro: #e9f5ff;
+    --gris-claro: #f7f9fc;
+    --blanco: #ffffff;
+    --texto-oscuro: #2c3e50;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --nav-height: 100px;
+    --accent-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--texto-oscuro);
+    background-color: var(--gris-claro);
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    padding-top: calc(var(--nav-height) + 150px);
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+
+/* Curvatura / Wave */
+.curvatura {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 999;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Navigation */
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2.5rem;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo img {
+    height: 80px;
+    transition: var(--transition);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.menu {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.menu a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    transition: var(--transition);
+    position: relative;
+    font-size: 1.15rem;
+    border-radius: var(--border-radius);
+    letter-spacing: 0.5px;
+}
+
+.menu a:hover {
+    color: var(--blanco);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--blanco);
+    transition: var(--transition);
+    border-radius: 3px;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 28px;
+    height: 3px;
+    margin: 6px auto;
+    background-color: var(--blanco);
+    transition: var(--transition);
+    border-radius: 3px;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1300px;
+    margin: 2.5rem auto;
+    padding: 2.5rem;
+    background-color: var(--blanco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.main-content:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+}
+
+.titulo-droga {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.titulo-droga h2 {
+    color: var(--azul-principal);
+    font-size: 2.2rem;
+    border-bottom: 3px solid var(--azul-claro);
+    padding-bottom: 12px;
+    display: inline-block;
+    position: relative;
+}
+
+.titulo-droga h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 80px;
+    height: 3px;
+    background-color: var(--azul-oscuro);
+    transform: translateX(-50%);
+}
+
+/* Funcionalidades Admin Section */
+.funcionalidades-admin {
+    padding: 2rem;
+    background-color: var(--blanco);
+    border-radius: var(--border-radius);
+}
+
+/* Filtrar y Agregar Sección */
+.filtrar-drogas, .agregarDrogas {
+    margin-bottom: 2rem;
+}
+
+.filtrar-drogas {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.filtrar-drogas input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    border: 2px solid #e0e6ed;
+    border-radius: var(--border-radius);
+    font-size: 1.05rem;
+    transition: var(--transition);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.filtrar-drogas input:focus {
+    border-color: var(--azul-claro);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(93, 177, 255, 0.15);
+}
+
+.filtrar-drogas button, .agregarDrogas button {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+    border: none;
+    padding: 1rem 1.75rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    box-shadow: 0 3px 8px rgba(31, 127, 219, 0.3);
+    font-size: 1.05rem;
+}
+
+.filtrar-drogas button:hover, .agregarDrogas button:hover {
+    background-color: var(--azul-oscuro);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(13, 92, 163, 0.35);
+}
+
+.filtrar-drogas button:active, .agregarDrogas button:active {
+    transform: translateY(-1px);
+}
+
+.agregarDrogas button {
+    background-image: linear-gradient(to right, var(--azul-principal), var(--azul-oscuro));
+}
+
+/* Tabla Drogas */
+.drogas-table {
+    overflow-x: auto;
+    margin-top: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.drogas-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.drogas-table thead {
+    background-image: linear-gradient(to right, var(--azul-principal), var(--azul-oscuro));
+    color: var(--blanco);
+}
+
+.drogas-table th, .drogas-table td {
+    padding: 1.2rem 1.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e6edf5;
+}
+
+.drogas-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.8px;
+}
+
+.drogas-table tbody tr {
+    transition: var(--transition);
+}
+
+.drogas-table tbody tr:hover {
+    background-color: var(--azul-muy-claro);
+    transform: scale(1.01);
+}
+
+.drogas-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Actions Column */
+.drogas-table .actions-column {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+}
+
+.drogas-table .btn-action {
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drogas-table .btn-edit {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.drogas-table .btn-delete {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.drogas-table .btn-view {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.drogas-table .btn-action:hover {
+    transform: scale(1.15);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    background-image: linear-gradient(to right, var(--azul-principal), var(--azul-oscuro));
+    color: var(--blanco);
+    border-bottom: none;
+    padding: 1.75rem;
+}
+
+.modal-title {
+    font-weight: 700;
+    color: var(--blanco);
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-footer {
+    padding: 1.75rem;
+    border-top: 1px solid #f0f4f8;
+}
+
+.form-control, .form-select {
+    padding: 0.9rem 1.2rem;
+    border: 2px solid #e0e6ed;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 1.05rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 4px rgba(93, 177, 255, 0.15);
+    outline: none;
+}
+
+.btn-close {
+    color: var(--blanco);
+    opacity: 0.8;
+    transition: var(--transition);
+    padding: 0.5rem;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.btn-primary {
+    background-image: linear-gradient(to right, var(--azul-principal), var(--azul-oscuro));
+    border: none;
+    transition: var(--transition);
+    padding: 0.9rem 2.2rem;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(31, 127, 219, 0.3);
+    border-radius: var(--border-radius);
+    font-size: 1.05rem;
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(to right, var(--azul-oscuro), var(--azul-principal));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(13, 92, 163, 0.35);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+/* Labels */
+label.col-form-label {
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    :root {
+        --nav-height: 80px;
+    }
+    
+    body {
+        padding-top: calc(var(--nav-height) + 130px);
+    }
+    
+    .logo img {
+        height: 60px;
+    }
+    
+    .main-content {
+        padding: 2rem;
+    }
+    
+    .titulo-droga h2 {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --nav-height: 70px;
+    }
+    
+    body {
+        padding-top: calc(var(--nav-height) + 110px);
+    }
+    
+    .navegacion {
+        padding: 0.5rem 1.5rem;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+    
+    .menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-image: linear-gradient(to bottom, var(--azul-principal), var(--azul-oscuro));
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        padding: 1.5rem;
+        gap: 0.75rem;
+        display: none;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        z-index: 1001;
+    }
+    
+    .menu.active {
+        display: flex;
+    }
+    
+    .menu a {
+        width: 100%;
+        text-align: center;
+        padding: 0.9rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-content {
+        padding: 1.75rem 1.25rem;
+        margin: 1.5rem 1rem;
+    }
+    
+    .filtrar-drogas {
+        flex-direction: column;
+    }
+    
+    .filtrar-drogas button, .agregarDrogas button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .titulo-droga h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .drogas-table th, .drogas-table td {
+        padding: 0.9rem 1rem;
+    }
+    
+    .titulo-droga h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-title {
+        font-size: 1.4rem;
+    }
+    
+    .form-control, .form-select {
+        padding: 0.8rem 1rem;
+    }
+    
+    .btn-primary {
+        padding: 0.8rem 1.8rem;
+    }
+}

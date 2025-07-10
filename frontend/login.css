@@ -1,0 +1,244 @@
+/* Estilos generales - reutilizando variables de tu CSS principal */
+:root {
+  --azul-principal: #1a6bb2;
+  --azul-oscuro: #0d4d84;
+  --azul-claro: #55a2e5;
+  --azul-muy-claro: #e7f1fb;
+  --gris-claro: #f5f5f5;
+  --blanco: #ffffff;
+  --texto-oscuro: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--gris-claro);
+  color: var(--texto-oscuro);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header - reutilizado de tu CSS principal */
+header {
+  background: linear-gradient(135deg, var(--azul-principal), var(--azul-oscuro));
+  color: var(--blanco);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+nav a:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--blanco);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav a:hover:before {
+  width: 80%;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav a:active {
+  transform: translateY(-1px);
+}
+
+/* Estilos específicos para el formulario de login */
+.login {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin: 3rem auto;
+}
+
+.login h2 {
+  color: var(--azul-principal);
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#accesspanel {
+  background-color: var(--blanco);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#accesspanel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+#accesspanel:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--azul-claro), var(--azul-principal), var(--azul-claro));
+  background-size: 200% auto;
+  animation: gradientFlow 3s infinite linear;
+}
+
+.inset {
+  margin-bottom: 20px;
+}
+
+.inset p {
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: var(--gris-claro);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: var(--azul-principal);
+  box-shadow: 0 0 0 2px rgba(26, 107, 178, 0.2);
+  outline: none;
+}
+
+.p-container {
+  text-align: center;
+}
+
+input[type="submit"] {
+  background: linear-gradient(135deg, var(--azul-principal), var(--azul-oscuro));
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(26, 107, 178, 0.3);
+}
+
+input[type="submit"]:hover {
+  background: linear-gradient(135deg, var(--azul-principal) 30%, var(--azul-oscuro));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(26, 107, 178, 0.4);
+}
+
+input[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+/* Footer - reutilizado de tu CSS principal */
+footer {
+  background-color: var(--azul-oscuro);
+  color: var(--blanco);
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+footer:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--azul-claro), var(--azul-principal), var(--azul-claro));
+  animation: gradientFlow 3s infinite linear;
+  background-size: 200% auto;
+}
+
+@keyframes gradientFlow {
+  0% {background-position: 0% center;}
+  100% {background-position: 200% center;}
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  header {
+      padding: 1rem;
+  }
+  
+  header h1 {
+      font-size: 2rem;
+  }
+  
+  nav {
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+  
+  .login h2 {
+      font-size: 1.8rem;
+  }
+  
+  #accesspanel {
+      padding: 20px;
+      max-width: 90%;
+  }
+}
